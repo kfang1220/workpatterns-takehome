@@ -23,7 +23,7 @@ export const Home = () => {
         let addresses = email.addresses;
         let sender = addresses.find(user => user.role === SENDER)
         if (_.get(sender, "address") === USER) sentEmails.push(email) 
-      })
+    })
 
       console.log(data, sentEmails)
 
@@ -33,7 +33,7 @@ export const Home = () => {
         let sender = sentAddresses.find(user => user.role === SENDER)
         let messageId = _.get(email, "message-id");
         let responseEmail = data.find(email => {
-        return _.get(email, IN_REPLY_TO) === messageId && _.get(sender, "addresses") !== USER
+            return _.get(email, IN_REPLY_TO) === messageId && _.get(sender, "addresses") !== USER
         })
 
         if (responseEmail) {
@@ -71,7 +71,7 @@ export const Home = () => {
     return (
         <div>
             <div className={classes.header}> Monthly Average Email Response Time in Minutes </div>
-            <TableDisplay/>
+            <TableDisplay data={companyMap}/>
       </div>
     )
 }
