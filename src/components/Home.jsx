@@ -70,7 +70,7 @@ export const Home = () => {
 
     return (
         <div>
-            <div className={classes.header}> Monthly Average Email Response Time in Minutes </div>
+            <div className={classes.header}> Monthly Average Email Response Time in Minutes(1 year) </div>
             <TableDisplay data={companyMap}/>
       </div>
     )
