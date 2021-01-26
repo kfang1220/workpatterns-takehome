@@ -5,3 +5,4 @@ export const NUMBER_OF_EMAILS = "numberOfEmails";
 export const TOTAL_EMAIL_TIME = "totalEmailTime";
 export const IN_REPLY_TO = "in-reply-to"
 export const TIME = "time";
+export const DEFAULT_YEAR = 2018;

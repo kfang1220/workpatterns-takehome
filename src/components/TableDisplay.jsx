@@ -14,7 +14,7 @@ const useStyles = makeStyles({
         width: '100%',
     },
     container: {
-        maxHeight: "750px"
+        height: "750px"
     }
 })
 
@@ -25,6 +25,7 @@ export const TableDisplay = (props) => {
     const rows = [];
     const timeSumTotal = new Array(12).fill(0);
     const counterSumTotal = new Array(12).fill(0);
+    const uniqueYearsSet = new Set()
 
     const createRowData = (companyName, data) => {
         const monthlyData = _.get(data, TOTAL_EMAIL_TIME);
@@ -55,25 +56,36 @@ export const TableDisplay = (props) => {
     }
 
     for (let company in data) {
-        const companyTimeData = _.get(data[company], TOTAL_EMAIL_TIME);
-        const companyMonthlyEmailCount = _.get(data[company], NUMBER_OF_EMAILS);
-        for (let i = 0; i < companyTimeData.length; i++) {
-            timeSumTotal[i] += companyTimeData[i];
-            counterSumTotal[i] += companyMonthlyEmailCount[i];
+        for (let years in data[company]) {
+            uniqueYearsSet.add(years)
+        }
+    }
+    const companyTimeData = new Array(12).fill(0);
+    const companyMonthlyEmailCount = new Array(12).fill(0);
+    // loop through and get sum total for all orgs
+    for (let company in data) {
+        for(let year in data[company]) {
+            const yearObj = data[company][year];
+            for (let i = 0; i < yearObj[TOTAL_EMAIL_TIME].length; i++) {
+                companyTimeData[i] += yearObj[TOTAL_EMAIL_TIME][i];
+                companyMonthlyEmailCount[i] += yearObj[NUMBER_OF_EMAILS][i]
+            }
         }
     }
 
-    rows.push(createRowData("All Orgs", {"totalEmailTime": timeSumTotal, "numberOfEmails": counterSumTotal}))
+    rows.push(createRowData("All Orgs", {"totalEmailTime": companyTimeData, "numberOfEmails": companyMonthlyEmailCount}))
 
     for (let month in months) {
         columns.push({id: months[month], label: months[month], minWidth: 50})
     }
     
     for (let companies in data) {
-        let monthlyData = _.get(data[companies], TOTAL_EMAIL_TIME)
+        for (let year in data[companies]) {
+            let monthlyData = _.get(data[companies][year], TOTAL_EMAIL_TIME)
 
-        if (monthlyData) {
-            rows.push(createRowData(companies, data[companies]))
+            if (monthlyData) {
+                rows.push(createRowData(companies, data[companies][year]))
+            }
         }
     }
 

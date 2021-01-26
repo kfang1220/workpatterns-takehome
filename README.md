@@ -17,6 +17,7 @@ This project was a take home for Workpatterns. The task was to create a view to 
 I decided to define Email Response Time in minutes as that's the most realistic representation on a high level. The table was made with material ui but could've been done with native html as well. 
 
 Things to consider/potential ideas:
-1. User input for any email for any given JSON file. This makes the task somewhat of an application as it current only displays data with a given hard coded email.
-2. Years to be included rather than just 12 months. A single year could be displayed at any given time and I would paginate the rest. (Work in Progress)
-3. A dropdown or button to change from minutes to other units of time.
+1. ~~User input for any email for any given JSON file. This makes the task somewhat of an application as it current only displays data with a given hard coded email.~~ (Done)
+2. ~~Years to be included rather than just 12 months. A single year could be displayed at any given time and I would paginate the rest.~~ (Done) 
+3. A dropdown or button to change from minutes to other units of time. (Potential functionality)
+4. Add a button to make email change more intuitive, rather than MVP
