@@ -7,8 +7,9 @@ Workpatterns-Takehome
 To view this project do the following:
 1. clone repo
 2. npm install
-3. npm start
-4. If you aren't routed, view localhost:3000
+3. Configure another email or json file if desired
+4. npm start
+5. If you aren't routed, view localhost:3000
 
 ### About this Project
 
