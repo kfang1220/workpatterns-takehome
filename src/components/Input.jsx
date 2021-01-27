@@ -14,11 +14,11 @@ export const Input = (props) => {
     const [textString, setTextString] = React.useState("");
 
     const handleEmailChange = (e) => {
-        setTextString(e.target.value)
+        setTextString(e.target.value);
     }
 
     const clearField = () => {
-        setTextString("")
+        setTextString("");
     }
 
     return (

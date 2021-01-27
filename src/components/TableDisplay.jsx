@@ -7,7 +7,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import {months} from "../data/months"
 import _ from 'lodash';
-import { TIME, NUMBER_OF_EMAILS, TOTAL_EMAIL_TIME } from "../data/constants"
+import {NUMBER_OF_EMAILS, TOTAL_EMAIL_TIME } from "../data/constants"
 
 const useStyles = makeStyles({
     root: {
@@ -15,6 +15,9 @@ const useStyles = makeStyles({
     },
     container: {
         height: "750px"
+    },
+    cellHeader: {
+        fontWeight: "normal"
     }
 })
 
@@ -23,18 +26,20 @@ export const TableDisplay = (props) => {
     const { data } = props;
     const columns = [{id: "CompanyName", label: "CompanyName", minWidth: 50}];
     const rows = [];
-    const timeSumTotal = new Array(12).fill(0);
-    const counterSumTotal = new Array(12).fill(0);
-    const uniqueYearsSet = new Set()
+    const uniqueYearsSet = new Set();
+    const companyTimeData = new Array(12).fill(0);
+    const companyMonthlyEmailCount = new Array(12).fill(0);
 
+    //create rows for table
     const createRowData = (companyName, data) => {
         const monthlyData = _.get(data, TOTAL_EMAIL_TIME);
         if (monthlyData !== undefined) {
             const monthlyMinuteAverages = monthlyData.map((month, i) => {
                 if (data[NUMBER_OF_EMAILS][i] !== 0) {
-                    return month = Math.ceil(month/data[NUMBER_OF_EMAILS][i])
+                    return month = Math.ceil(month/data[NUMBER_OF_EMAILS][i]);
                 } else {
-                    return Math.ceil(month)
+                    if (month === 0) return <h6 key={i} className={classes.cellHeader}>None</h6>
+                    return Math.ceil(month);
                 }
             })
 
@@ -60,8 +65,7 @@ export const TableDisplay = (props) => {
             uniqueYearsSet.add(years)
         }
     }
-    const companyTimeData = new Array(12).fill(0);
-    const companyMonthlyEmailCount = new Array(12).fill(0);
+
     // loop through and get sum total for all orgs
     for (let company in data) {
         for(let year in data[company]) {
