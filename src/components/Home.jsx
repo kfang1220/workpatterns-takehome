@@ -155,7 +155,7 @@ export const Home = () => {
                     title={"Year"}
                 />
                 <DropdownSelect
-                    title={"Time Frame"}
+                    title={"Response Time Frame"}
                     labelId={"time-frame-selector"}
                     id={"time-frame-selector"}
                     value={minuteRange}
