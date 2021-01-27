@@ -38,7 +38,7 @@ export const TableDisplay = (props) => {
                 if (data[NUMBER_OF_EMAILS][i] !== 0) {
                     return month = Math.ceil(month/data[NUMBER_OF_EMAILS][i]);
                 } else {
-                    if (month === 0) return <h6 key={i} className={classes.cellHeader}>None</h6>
+                    if (month === 0) return <h6 key={i} className={classes.cellHeader}>No Data</h6>
                     return Math.ceil(month);
                 }
             })
