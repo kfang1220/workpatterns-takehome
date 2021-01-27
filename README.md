@@ -20,6 +20,8 @@ The reason behind this is because many emails can be potentially answered within
 
 The table was made with material ui but could've been done with native html as well. 
 
+Reason behind email change being an input was to show/use something different. It could have been a scraped list of emails within the JSON.
+
 Things to consider/potential ideas:
 1. ~~User input for any email for any given JSON file. This makes the task somewhat of an application as it current only displays data with a given hard coded email.~~ (Done)
 2. ~~Years to be included rather than just 12 months. A single year could be displayed at any given time and I would paginate the rest.~~ (Done) 
